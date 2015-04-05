@@ -1,3 +1,5 @@
+[![Travis CI status icon](https://api.travis-ci.org/tgecho/condensate.svg?branch=master)](https://travis-ci.org/tgecho/condensate)
+
 # What?
 
 Condensate is a super cool library for managing application state inspired by Om, Clojure, Bose and Einstein.

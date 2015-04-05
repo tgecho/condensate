@@ -16,7 +16,7 @@
   },
   "main": "src/index.js",
   "scripts": {
-    "test": "karma start karma.conf.js --single-run --browsers Firefox"
+    "test": "./node_modules/karma/bin/karma start karma.conf.js --single-run"
   },
   "license": "MIT",
   "devDependencies": {

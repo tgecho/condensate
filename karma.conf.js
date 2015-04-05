@@ -9,6 +9,7 @@ module.exports = function(config) {
     frameworks: ['mocha', 'chai', 'chai-as-promised'],
 
     files: [
+        'node_modules/babel-core/browser-polyfill.js',
         'tests/*_test.js',
         'tests/**/*_test.js'
     ],
@@ -37,13 +38,7 @@ module.exports = function(config) {
     autoWatch: true,
 
     // Chrome, ChromeCanary, Firefox, Opera, Safari (only Mac), PhantomJS, IE (only Windows)
-    browsers: [
-        // 'PhantomJS',
-        'Chrome', 'Firefox'
-        // 'ChromeCanary', 'Opera', 'Safari'
-    ],
-    captureTimeout: 1000 * 60,
-    // browserNoActivityTimeout: 1000 * 60 * 2.5,
+    browsers: ['Firefox'],
 
     singleRun: false
   });
