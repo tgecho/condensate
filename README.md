@@ -17,7 +17,9 @@ Much has already been written about the benefits of immutable data and careful m
 
 # Installation
 
-Currently, Condensate is available as raw, untranspiled ES6. [Webpack](http://webpack.github.io/) and [Babel](https://babeljs.io/) are highly recommended, though I'm not opposed to distributing a transpiled-to-ES5 version. See the `examples/webpack.config.js` for a working example.
+Available via `npm install condensate` or `bower install condensate`.
+
+Currently, Condensate is available as raw, untranspiled ES6. [Webpack](http://webpack.github.io/) and [Babel](https://babeljs.io/) are highly recommended, though I'm not opposed to distributing a transpiled-to-ES5 version in the future. See the `examples/webpack.config.js` for a working example.
 
 # Usage
 
@@ -52,7 +54,7 @@ atom.value.get('number') === 3
 
 ## Transactions
 
-Many state transitions must be coordinated with asynchronous requests to the server. Rather then waiting for the full round trip to succeed, Condensate allows you to optimistically apply the change using a transaction. This is done by passing a transaction function to `doTransact`.
+Many state transitions must be coordinated with asynchronous requests to the server. Rather then waiting for the full round trip to succeed, Condensate allows you to optimistically apply the change using a transaction by passing a function to `doTransact`.
 
 ```js
 const transaction = atom.doTransact(function(value) {
@@ -61,7 +63,7 @@ const transaction = atom.doTransact(function(value) {
 atom.value.get('number') === 4
 ```
 
-The function will receive the current value and must return a new replacement value. `doTransact` returns a transaction object, which has a commit method and cancel method.
+The function will receive the current value and must return a replacement value. `doTransact` returns a transaction object containing commit and cancel methods.
 
 ```js
 setNumberOnServerWithAjax(4)
@@ -73,11 +75,12 @@ The transaction function is placed in a queue and applied to the state immediate
 
 A transaction function must be pure, as it may be called repeatedly based on results of other transactions that preceed it.
 
-The sugar update functions are actually implemented on top of the base `doTransact` function and automatically call commit.
+The other update functions are actually implemented on top of the base `doTransact` function and automatically call commit for you.
+
 
 ## Cursors
 
-Managing state from a root atom would seem to severely restrict our ability to build modular components. The Om inspired solution is to allow cursors to be derived from the root atom.
+Managing state from a root atom would seem to severely restrict our ability to build modular components. Condensate's Om inspired solution is to allow cursors to be derived from the root atom.
 
 ```js
 atom = new Atom(Immutable.fromJS({nested: {letter: 'a'}}))
@@ -85,7 +88,7 @@ var cursor = atom.cursor(['nested'])
 cursor.value.get('letter') === 'a'
 ```
 
-Cursors maintain an internal reference to their root atom along with a path to their node. The Cursor API is identical the Atom API, and you can even derive deeper cursors if needed. Changes made to the cursor's value will be reflected in the root atom.
+Cursors maintain an internal reference to their root atom along with a path to an inner node in the tree. The Cursor API is identical the Atom API, and you can even derive deeper cursors if needed. Changes made to the cursor's value will be reflected in the root atom.
 
 ```js
 cursor.doSet('letter', 'b')
@@ -125,6 +128,6 @@ cursor.subscribe(function(value, oldValue) {
 
 I've been using it on a few unreleased early stage projects with great success, but I want to let it bake for a bit to ensure everything is conceptually sound before stamping a beta or higher version on it.
 
-The basic (and intentionally narrow) scope of the project is largely in place, with no major functionality currently planned for the code library. I do intend to add a few extras, primarily around integration helpers for other projects such as React and react-router.
+The basic (and intentionally narrow) scope of the project is largely in place, with no major functionality currently planned for the core library. I do intend to add a few extras, primarily around integration helpers for other projects such as React and react-router.
 
 There are also some potential optimizations and a few design decisions around error handling that will need to occur, but as of now there are no known glaring issues.
