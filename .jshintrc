@@ -1,0 +1,8 @@
+{
+	"esnext": true,
+	"eqeqeq": true,
+	"undef": true,
+	"globals": {
+		"document": true
+	}
+}

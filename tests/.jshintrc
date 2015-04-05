@@ -1,0 +1,10 @@
+{
+	"globals": {
+		"suite": true,
+		"test": true,
+		"suite": true,
+		"assert": true,
+		"setup": true,
+		"teardown": true
+	}
+}

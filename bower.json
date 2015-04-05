@@ -1,0 +1,28 @@
+{
+  "name": "condensate",
+  "version": "0.1.0-alpha.1",
+  "authors": [
+    "Erik Simmler <tgecho@gmail.com>"
+  ],
+  "description": "Application state management inspired by Om and Clojure.",
+  "main": "src/index.js",
+  "dependencies": {
+    "immutable": ">=3.7.1"
+  },
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "react",
+    "immutable"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/tgecho/condensate",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

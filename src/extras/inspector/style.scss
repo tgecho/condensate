@@ -1,0 +1,109 @@
+.inspector {
+  height: 40vh;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  opacity: .75;
+  background: #eee;
+  border-top: 2px solid #666;
+
+  * {
+    box-sizing: border-box;
+  }
+  table {
+    border-collapse: collapse;
+  }
+  th, td {
+    text-align: left;
+    vertical-align: top;
+    padding: 0;
+    margin: 0;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #fff;
+  }
+  th > sub {
+    font-weight: normal;
+    vertical-align: middle;
+  }
+
+  .nodeKey, .nodeEnd {
+    position: relative;
+    border: none;
+    background: none;
+    text-align: inherit;
+
+    th, td {
+      padding: .25em;
+    }
+
+  }
+
+  .nodeKey {
+    cursor: pointer;
+
+    th {
+      font-weight: bold;
+    }
+
+    &.active {
+      background: rgba(175, 212, 250, .5);
+    }
+
+    &:hover {
+      background: rgba(175, 212, 250, 1);
+    }
+
+    &:focus {
+      // since adjacent buttons are touching, this
+      // brings the focus halo above next list item
+      z-index: 2;
+    }
+
+    & > :last-child {
+      position: relative;
+      padding-right: 1.25em;
+
+      &:after {
+        content: '\2794';
+        font-weight: normal;
+        font-size: .75em;
+        position: absolute;
+        right: .25em;
+        line-height: 0;
+        top: 50%;
+      }
+    }
+  }
+
+  .list, .node {
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+  }
+  .node .node .list {
+    border-left: 1px solid #666;
+  }
+
+  .truncated {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .breadcrumbs {
+    padding: .25em;
+
+    a {
+      display: inline-block;
+      padding: .25em;
+    }
+  }
+
+}

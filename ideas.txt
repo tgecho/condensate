@@ -1,0 +1,20 @@
+dev helpers
+	a function that can recieve changes and warns on any non whitelisted object types added to atom
+	record changes
+		show a list of the transactions and the resulting states
+		allow viewing previous state trees
+		allow setting the atom back to a previous state
+			(how to handle pending transactions?)
+		record a stack trace using an unthrown `new Error()`
+			there may be performance implications for running this outside of dev
+	allow modifying state of application through dev panel
+		change strings/numbers (easy)
+		add/remove list/map items (less easy)
+		drag/copy/paste values around the tree (hard)
+
+
+issues
+	accidentally passed a string to .cursor() and just got undefined. this should either be handled as a one key path or raise an error
+
+	consider adding get/getIn functions to atom/cursor
+		these could return the values or cursors
